@@ -1,5 +1,11 @@
 import React from 'react';
+import GlobalStyle from 'theme/GlobalStyle';
 
-const Root = () => <h1>Hello Rahexx</h1>;
+const Root = () => (
+  <>
+    <GlobalStyle />
+    <h1>Hello Rahexx</h1>
+  </>
+);
 
 export default Root;
