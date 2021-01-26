@@ -7,3 +7,5 @@ export default {
 };
 
 export const mainInput = () => <Input placeholder="Nazwa kategorii" />;
+export const FormInput = () => <Input form placeholder="Kategoria" />;
+export const SearchInput = () => <Input search placeholder="Szukaj kategorii" />;
