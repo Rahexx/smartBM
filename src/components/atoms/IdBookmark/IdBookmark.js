@@ -6,7 +6,7 @@ const IdBookmark = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
+  font-size: 2.8rem;
   font-weight: bold;
   border-radius: 50px;
   color: #b4bf5e;
