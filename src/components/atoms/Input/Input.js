@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 const Input = styled.input`
   width: 137px;
-  padding: 5px 15px;
+  padding: 5px 19px;
   border-radius: 5px;
   border: none;
 
@@ -30,7 +30,7 @@ const Input = styled.input`
     css`
       height: 35px;
       width: 60vw;
-      border-radius: 50px;
+      border-radius: 25px;
 
       :focus {
         outline: none;
