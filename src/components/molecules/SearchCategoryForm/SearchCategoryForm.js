@@ -31,7 +31,7 @@ const SearchCategoryForm = () => (
   <StyledForm>
     <Input placeholder="Szukaj kategorii" search />
     <SubmitBtn>
-      <Search />
+      <Search size="18" />
     </SubmitBtn>
   </StyledForm>
 );
