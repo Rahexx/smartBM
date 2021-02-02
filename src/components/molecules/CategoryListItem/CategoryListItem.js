@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FolderOpen } from '@styled-icons/boxicons-regular/FolderOpen';
 
 const StyledWrapper = styled.div`
@@ -9,10 +9,23 @@ const StyledWrapper = styled.div`
   padding-left: 17px;
   display: flex;
   align-items: center;
+  background-color: transparent;
+
+  ${({ active }) =>
+    active &&
+    css`
+      background-color: #b4bf5e;
+    `}
 `;
 
 const StyledIcon = styled(FolderOpen)`
   color: #b4bf5e;
+
+  ${({ active }) =>
+    active &&
+    css`
+      color: white;
+    `}
 `;
 
 const StyledName = styled.p`
@@ -21,9 +34,9 @@ const StyledName = styled.p`
   color: white;
 `;
 
-const CategoryListItem = ({ name }) => (
-  <StyledWrapper>
-    <StyledIcon size="20" />
+const CategoryListItem = ({ name, active }) => (
+  <StyledWrapper active={active}>
+    <StyledIcon size="20" active={active} />
     <StyledName>{name}</StyledName>
   </StyledWrapper>
 );
@@ -32,4 +45,9 @@ export default CategoryListItem;
 
 CategoryListItem.propTypes = {
   name: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+};
+
+CategoryListItem.defaultProps = {
+  active: false,
 };
