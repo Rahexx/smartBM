@@ -14,6 +14,7 @@ const Input = styled.input`
     form &&
     css`
       width: 75vw;
+      border: 2px solid black;
 
       :focus {
         border: 2px solid #485922;
@@ -21,7 +22,7 @@ const Input = styled.input`
       }
 
       @media (min-width: 400px) {
-        width: calc(100vw / 1.5);
+        width: 100%;
       }
     `}
 

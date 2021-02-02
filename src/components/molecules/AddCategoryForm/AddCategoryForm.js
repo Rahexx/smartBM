@@ -9,7 +9,6 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #485922;
 `;
 
 const InnerWrapper = styled.div`
