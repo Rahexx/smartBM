@@ -2,20 +2,26 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Input from 'components/atoms/Input/Input';
 
+const renderInput = () => {
+  const utils = render(<Input placeholder="Nazwa kategorii" />);
+  const input = utils.getByPlaceholderText('Nazwa kategorii');
+
+  return { ...utils, input };
+};
+
 describe('Input component', () => {
   it('renders Input component', () => {
-    const { getByPlaceholderText } = render(<Input placeholder="Nazwa kategorii" />);
-
-    expect(getByPlaceholderText('Nazwa kategorii')).toBeInTheDocument();
+    const { input } = renderInput();
+    expect(input).toBeInTheDocument();
   });
 
   it('displays proper value', () => {
-    const { getByPlaceholderText } = render(<Input placeholder="Nazwa kategorii" />);
+    const { input } = renderInput();
 
-    expect(getByPlaceholderText('Nazwa kategorii')).toBeInTheDocument();
+    expect(input).toBeInTheDocument();
 
-    fireEvent.change(getByPlaceholderText('Nazwa kategorii'), { target: { value: 'gameName' } });
+    fireEvent.change(input, { target: { value: 'gameName' } });
 
-    expect(getByPlaceholderText('Nazwa kategorii')).toHaveValue('gameName');
+    expect(input).toHaveValue('gameName');
   });
 });

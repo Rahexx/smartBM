@@ -81,18 +81,18 @@ const AddBookmark = () => (
   <StyledWrapper>
     <StyledCrossIcon size="33" />
     <StyledHeader>Dodaj zakładkę</StyledHeader>
-    <StyledForm>
+    <StyledForm data-testid="AddBookmark-element">
       <StyledField>
-        <StyledLabel>Tytuł zakładki</StyledLabel>
-        <Input placeholder="Tytuł zakładki" form />
+        <StyledLabel htmlFor="title">Tytuł zakładki</StyledLabel>
+        <Input name="title" id="title" placeholder="Tytuł zakładki" form />
       </StyledField>
       <StyledField>
-        <StyledLabel>Link</StyledLabel>
-        <Input placeholder="Link" form />
+        <StyledLabel htmlFor="link">Link</StyledLabel>
+        <Input name="link" id="link" placeholder="Link" form />
       </StyledField>
       <StyledField larger>
-        <StyledLabel>Opis zakładki</StyledLabel>
-        <StyledTextArea placeholder="Opis zakładki" />
+        <StyledLabel htmlFor="description">Opis zakładki</StyledLabel>
+        <StyledTextArea name="description" id="description" placeholder="Opis zakładki" />
       </StyledField>
       <Button addBookMark form>
         Dodaj kategorię
