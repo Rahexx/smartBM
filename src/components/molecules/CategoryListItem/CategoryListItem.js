@@ -35,9 +35,9 @@ const StyledName = styled.p`
 `;
 
 const CategoryListItem = ({ name, active }) => (
-  <StyledWrapper active={active}>
+  <StyledWrapper data-testid="CategoryListItem-element" active={active}>
     <StyledIcon size="20" active={active} />
-    <StyledName>{name}</StyledName>
+    <StyledName data-testid="CategoryListItem-name">{name}</StyledName>
   </StyledWrapper>
 );
 
