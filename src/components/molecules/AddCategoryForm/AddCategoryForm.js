@@ -41,7 +41,7 @@ const StyledInput = styled(Input)`
 `;
 
 const AddCategoryForm = () => (
-  <StyledWrapper>
+  <StyledWrapper data-testid="AddCategoryForm-element">
     <InnerWrapper>
       <StyledFormText>Dodaj kategorię</StyledFormText>
       <StyledPlusIcon size="29" />

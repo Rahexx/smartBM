@@ -28,7 +28,7 @@ const SubmitBtn = styled.button`
 `;
 
 const SearchCategoryForm = () => (
-  <StyledForm>
+  <StyledForm data-testid="SearchCategoryForm-element">
     <Input placeholder="Szukaj kategorii" search />
     <SubmitBtn>
       <Search size="18" />
