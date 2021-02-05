@@ -6,6 +6,7 @@ import { Search } from '@styled-icons/boxicons-regular/Search';
 const StyledForm = styled.form`
   height: 40px;
   width: 60vw;
+  margin-bottom: 30px;
   position: relative;
 
   @media (min-width: 400px) {

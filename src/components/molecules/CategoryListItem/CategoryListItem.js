@@ -6,7 +6,6 @@ import { FolderOpen } from '@styled-icons/boxicons-regular/FolderOpen';
 const StyledWrapper = styled.div`
   height: 29px;
   width: 100vw;
-  padding-left: 17px;
   display: flex;
   align-items: center;
   background-color: transparent;
