@@ -2,6 +2,13 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import BookmarkListItem from 'components/molecules/BookmarkListItem/BookmarkListItem';
 
+const renderBookmarkListItem = (idItem) => {
+  const utils = render(<BookmarkListItem number={1} title="Myjnia samochodowa" />);
+  const bookmarkListItem = utils.getByTestId(idItem);
+
+  return { ...utils, bookmarkListItem };
+};
+
 describe('BookmarkListItem', () => {
   it('Render BookmarkListItem component', () => {
     const { getByTestId } = render(
@@ -15,20 +22,17 @@ describe('BookmarkListItem', () => {
   });
 
   it('Display properly props number', () => {
-    const { getByTestId } = render(<BookmarkListItem number={1} title="Myjnia samochodowa" />);
-
-    expect(getByTestId('BookmarkListItem-number')).toHaveTextContent(1);
+    const { bookmarkListItem } = renderBookmarkListItem('BookmarkListItem-number');
+    expect(bookmarkListItem).toHaveTextContent(1);
   });
 
   it('Display properly props title', () => {
-    const { getByTestId } = render(<BookmarkListItem number={1} title="Myjnia samochodowa" />);
-
-    expect(getByTestId('BookmarkListItem-title')).toHaveTextContent('Myjnia samochodowa');
+    const { bookmarkListItem } = renderBookmarkListItem('BookmarkListItem-title');
+    expect(bookmarkListItem).toHaveTextContent('Myjnia samochodowa');
   });
 
   it('Check default props children', () => {
-    const { getByTestId } = render(<BookmarkListItem number={1} title="Myjnia samochodowa" />);
-
-    expect(getByTestId('BookmarkListItem-description')).toHaveTextContent('');
+    const { bookmarkListItem } = renderBookmarkListItem('BookmarkListItem-description');
+    expect(bookmarkListItem).toHaveTextContent('');
   });
 });
