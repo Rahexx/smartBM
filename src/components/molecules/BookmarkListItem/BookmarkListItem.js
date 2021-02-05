@@ -51,7 +51,7 @@ const StyledIconTrash = styled(Trash)`
 `;
 
 const BookmarkListItem = ({ number, title, children }) => (
-  <StyledWrapper>
+  <StyledWrapper data-testid="BookmarkListItem-element">
     <IdBookmark>{number}</IdBookmark>
     <StyledInnerWrapper>
       <StyledTitleBookmark>{title}</StyledTitleBookmark>

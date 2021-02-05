@@ -9,6 +9,6 @@ export default {
 export const ListItem = () => (
   <BookmarkListItem number={1} title="Myjnia samochodowa">
     Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non est ut
-    mauris tempor euismod. Etiam lacinia tempor sollicitudin.{' '}
+    mauris tempor euismod. Etiam lacinia tempor sollicitudin.
   </BookmarkListItem>
 );
