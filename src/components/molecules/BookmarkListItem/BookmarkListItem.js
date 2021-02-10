@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import IdBookmark from 'components/atoms/IdBookmark/IdBookmark';
 import { Trash } from '@styled-icons/boxicons-regular/Trash';
 
-const StyledWrapper = styled.li`
+const StyledWrapper = styled.div`
   height: 25vh;
-  width: 90vw;
+  width: calc(100vw - 25px);
   padding: 10px 15px;
   position: absolute;
   display: flex;
