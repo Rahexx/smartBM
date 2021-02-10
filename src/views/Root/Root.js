@@ -1,10 +1,11 @@
 import React from 'react';
 import GlobalStyle from 'theme/GlobalStyle';
+import MainView from 'views/MainView/MainView';
 
 const Root = () => (
   <>
     <GlobalStyle />
-    <h1>Hello Rahexx</h1>
+    <MainView />
   </>
 );
 
