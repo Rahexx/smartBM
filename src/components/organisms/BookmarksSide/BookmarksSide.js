@@ -7,7 +7,7 @@ import BookmarkListItem from 'components/molecules/BookmarkListItem/BookmarkList
 const StyledWrapper = styled.div`
   min-height: 100vh;
   width: 100vw;
-  padding: 25px 0 0 25px;
+  padding: 25px 0 0 30px;
   position: relative;
   background-color: #798c35;
 `;

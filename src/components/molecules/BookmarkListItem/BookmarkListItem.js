@@ -38,7 +38,7 @@ const StyledDelete = styled.p`
   width: 30px;
   position: absolute;
   top: 9px;
-  right: 9px;
+  right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
