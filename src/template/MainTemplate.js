@@ -14,5 +14,5 @@ const MainTemplate = ({ children }) => <StyledWrapper>{children}</StyledWrapper>
 export default MainTemplate;
 
 MainTemplate.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
