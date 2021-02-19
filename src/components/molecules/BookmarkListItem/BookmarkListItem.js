@@ -39,6 +39,11 @@ const StyledInnerWrapper = styled.div`
     padding-right: 80px;
     overflow: hidden;
   }
+
+  @media (min-width: 1600px) {
+    padding-right: 80px;
+    margin-right: 50px;
+  }
 `;
 
 const StyledTitleBookmark = styled.h3`
@@ -87,6 +92,13 @@ const StyledDelete = styled.p`
     &:hover {
       cursor: pointer;
     }
+  }
+
+  @media (min-width: 1600px) {
+    height: 50px;
+    width: 50px;
+    top: 20px;
+    right: 50px;
   }
 `;
 

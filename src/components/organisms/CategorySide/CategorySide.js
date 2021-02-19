@@ -42,6 +42,11 @@ const StyledWrapper = styled.div`
     width: 33vw;
     transition: 0s;
   }
+
+  @media (min-width: 1600px) {
+    padding: 50px 25px 25px;
+    width: 18vw;
+  }
 `;
 
 const StyledHeader = styled.h2`

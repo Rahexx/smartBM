@@ -16,6 +16,11 @@ const StyledWrapper = styled.div`
     padding: 25px 0 0 0;
     left: 33vw;
   }
+
+  @media (min-width: 1600px) {
+    width: 82vw;
+    left: 18vw;
+  }
 `;
 
 const StyledHeader = styled.h2`
@@ -30,6 +35,10 @@ const StyledHeader = styled.h2`
   @media (min-width: 960px) {
     font-size: 3.3rem;
   }
+
+  @media (min-width: 1600px) {
+    margin: 0 0 30px 80px;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -43,6 +52,10 @@ const StyledButton = styled(Button)`
     &:hover {
       cursor: pointer;
     }
+  }
+
+  @media (min-width: 1600px) {
+    margin-left: 80px;
   }
 `;
 

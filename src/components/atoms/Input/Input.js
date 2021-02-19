@@ -48,6 +48,10 @@ const Input = styled.input`
       @media (min-width: 960px) {
         width: 20vw;
       }
+
+      @media (min-width: 1600px) {
+        width: 12vw;
+      }
     `}
 `;
 

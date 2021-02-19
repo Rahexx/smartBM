@@ -15,8 +15,15 @@ const IdBookmark = styled.p`
   @media (min-width: 720px) {
     height: 57px;
     width: 57px;
-    font-size: 3.3rem;
     margin-left: 15px;
+    font-size: 3.3rem;
+  }
+
+  @media (min-width: 1600px) {
+    height: 72px;
+    width: 72px;
+    margin-left: 75px;
+    font-size: 3.8rem;
   }
 `;
 
