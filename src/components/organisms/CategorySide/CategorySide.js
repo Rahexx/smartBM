@@ -63,7 +63,11 @@ const StyledDoubleArrowIcon = styled(DoubleArrow)`
   color: white;
 
   @media (min-width: 540px) {
-    right: 3vw;
+    right: 2.5vw;
+  }
+
+  @media (min-width: 720px) {
+    right: 2.1vw;
   }
 `;
 

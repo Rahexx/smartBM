@@ -13,16 +13,26 @@ const StyledWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #b4bf5e;
+
+  @media (min-width: 540px) {
+    height: 33vh;
+  }
 `;
 
 const StyledInnerWrapper = styled.div`
   width: 75%;
   height: 90%;
-  overflow: hidden;
+  overflow: scroll;
+
+  @media (min-width: 540px) {
+    width: 80%;
+    padding-right: 30px;
+  }
 `;
 
 const StyledTitleBookmark = styled.h3`
   margin-bottom: 13px;
+  width: 80%;
   font-size: 1.6rem;
   text-align: left;
   color: white;
@@ -44,10 +54,20 @@ const StyledDelete = styled.p`
   align-items: center;
   background-color: #485922;
   border-radius: 50px;
+
+  @media (min-width: 720px) {
+    height: 35px;
+    width: 35px;
+  }
 `;
 
 const StyledIconTrash = styled(Trash)`
   color: #b4bf5e;
+
+  @media (min-width: 720px) {
+    height: 23px;
+    width: 23px;
+  }
 `;
 
 const BookmarkListItem = ({ number, title, children }) => (

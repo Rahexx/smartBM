@@ -44,7 +44,7 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled(Input)`
-  margin-right: 35px;
+  margin-right: 25px;
 
   :focus {
     outline: none;

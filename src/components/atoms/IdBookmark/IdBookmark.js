@@ -11,6 +11,13 @@ const IdBookmark = styled.p`
   border-radius: 50px;
   color: #b4bf5e;
   background-color: #242614;
+
+  @media (min-width: 720px) {
+    height: 57px;
+    width: 57px;
+    font-size: 3.3rem;
+    margin-left: 15px;
+  }
 `;
 
 export default IdBookmark;

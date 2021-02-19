@@ -16,10 +16,18 @@ const StyledHeader = styled.h2`
   margin: 0 0 30px 15px;
   text-align: left;
   color: white;
+
+  @media (min-width: 720px) {
+    margin: 0 0 30px 30px;
+  }
 `;
 
 const StyledButton = styled(Button)`
   margin-left: 15px;
+
+  @media (min-width: 720px) {
+    margin-left: 30px;
+  }
 `;
 
 const StyledList = styled.ul`
@@ -29,12 +37,20 @@ const StyledList = styled.ul`
   display: flex;
   flex-direction: column;
   list-style: none;
+
+  @media (min-width: 540px) {
+    margin-top: 13px;
+  }
 `;
 
 const StyledItem = styled.li`
   height: 25vh;
   width: 100%;
   margin: 23px 0;
+
+  @media (min-width: 540px) {
+    height: 33vh;
+  }
 `;
 
 const BookmarksSide = ({ title }) => (
