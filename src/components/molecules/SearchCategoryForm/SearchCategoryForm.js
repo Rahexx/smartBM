@@ -12,6 +12,10 @@ const StyledForm = styled.form`
   @media (min-width: 400px) {
     width: 55vw;
   }
+
+  @media (min-width: 540px) {
+    width: 43vw;
+  }
 `;
 
 const SubmitBtn = styled.button`

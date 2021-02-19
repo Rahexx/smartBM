@@ -49,6 +49,10 @@ const ListCategory = styled.ul`
   width: 100%;
   height: 45vh;
   list-style: none;
+
+  @media (min-width: 540px) {
+    height: 35vh;
+  }
 `;
 
 const StyledDoubleArrowIcon = styled(DoubleArrow)`
@@ -57,6 +61,10 @@ const StyledDoubleArrowIcon = styled(DoubleArrow)`
   right: 5vw;
   transform: translate(50%, -50%) rotate(180deg);
   color: white;
+
+  @media (min-width: 540px) {
+    right: 3vw;
+  }
 `;
 
 const CategorySide = () => (
