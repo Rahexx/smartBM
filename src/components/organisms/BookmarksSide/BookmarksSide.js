@@ -10,6 +10,12 @@ const StyledWrapper = styled.div`
   padding: 25px 0 0 30px;
   position: relative;
   background-color: #798c35;
+
+  @media (min-width: 960px) {
+    width: 67vw;
+    padding: 25px 0 0 0;
+    left: 33vw;
+  }
 `;
 
 const StyledHeader = styled.h2`
@@ -20,6 +26,10 @@ const StyledHeader = styled.h2`
   @media (min-width: 720px) {
     margin: 0 0 30px 30px;
   }
+
+  @media (min-width: 960px) {
+    font-size: 3.3rem;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -27,6 +37,12 @@ const StyledButton = styled(Button)`
 
   @media (min-width: 720px) {
     margin-left: 30px;
+  }
+
+  @media (min-width: 960px) {
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -41,6 +57,10 @@ const StyledList = styled.ul`
   @media (min-width: 540px) {
     margin-top: 13px;
   }
+
+  @media (min-width: 960px) {
+    width: 67vw;
+  }
 `;
 
 const StyledItem = styled.li`
@@ -50,6 +70,10 @@ const StyledItem = styled.li`
 
   @media (min-width: 540px) {
     height: 33vh;
+  }
+
+  @media (min-width: 960px) {
+    height: 20vh;
   }
 `;
 

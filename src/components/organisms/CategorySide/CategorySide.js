@@ -40,6 +40,7 @@ const StyledWrapper = styled.div`
 
   @media (min-width: 960px) {
     width: 33vw;
+    transition: 0s;
   }
 `;
 

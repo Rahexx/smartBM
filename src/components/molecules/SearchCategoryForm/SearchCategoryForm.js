@@ -34,6 +34,10 @@ const SubmitBtn = styled.button`
   align-items: center;
   border-radius: 50px;
   background-color: #b4bf5e;
+
+  @media (min-width: 960px) {
+    cursor: pointer;
+  }
 `;
 
 const SearchCategoryForm = () => (

@@ -17,6 +17,12 @@ const StyledWrapper = styled.div`
   @media (min-width: 540px) {
     height: 33vh;
   }
+
+  @media (min-width: 960px) {
+    height: 20vh;
+    width: 100%;
+    padding: 20px 15px;
+  }
 `;
 
 const StyledInnerWrapper = styled.div`
@@ -28,6 +34,11 @@ const StyledInnerWrapper = styled.div`
     width: 80%;
     padding-right: 30px;
   }
+
+  @media (min-width: 960px) {
+    padding-right: 80px;
+    overflow: hidden;
+  }
 `;
 
 const StyledTitleBookmark = styled.h3`
@@ -36,11 +47,19 @@ const StyledTitleBookmark = styled.h3`
   font-size: 1.6rem;
   text-align: left;
   color: white;
+
+  @media (min-width: 960px) {
+    font-size: 1.9rem;
+  }
 `;
 
 const StyledText = styled.p`
   font-size: 1.3rem;
   color: white;
+
+  @media (min-width: 960px) {
+    font-size: 1.6rem;
+  }
 `;
 
 const StyledDelete = styled.p`
@@ -59,6 +78,16 @@ const StyledDelete = styled.p`
     height: 35px;
     width: 35px;
   }
+
+  @media (min-width: 960px) {
+    height: 40px;
+    width: 40px;
+    right: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 const StyledIconTrash = styled(Trash)`
@@ -67,6 +96,11 @@ const StyledIconTrash = styled(Trash)`
   @media (min-width: 720px) {
     height: 23px;
     width: 23px;
+  }
+
+  @media (min-width: 960px) {
+    height: 28px;
+    width: 28px;
   }
 `;
 
