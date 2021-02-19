@@ -37,12 +37,20 @@ const StyledWrapper = styled.div`
   background-color: #485922;
   z-index: 2;
   transition: 0.5s;
+
+  @media (min-width: 960px) {
+    width: 33vw;
+  }
 `;
 
 const StyledHeader = styled.h2`
   margin-bottom: 30px;
   text-align: left;
   color: white;
+
+  @media (min-width: 960px) {
+    font-size: 2.9rem;
+  }
 `;
 
 const ListCategory = styled.ul`
@@ -68,6 +76,10 @@ const StyledDoubleArrowIcon = styled(DoubleArrow)`
 
   @media (min-width: 720px) {
     right: 2.1vw;
+  }
+
+  @media (min-width: 960px) {
+    display: none;
   }
 `;
 

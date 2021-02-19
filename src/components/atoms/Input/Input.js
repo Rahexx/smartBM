@@ -41,8 +41,12 @@ const Input = styled.input`
         width: 55vw;
       }
 
-      @media (min-width: 400px) {
+      @media (min-width: 540px) {
         width: 43vw;
+      }
+
+      @media (min-width: 960px) {
+        width: 20vw;
       }
     `}
 `;

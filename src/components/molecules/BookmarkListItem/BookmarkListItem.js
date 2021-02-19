@@ -22,7 +22,7 @@ const StyledWrapper = styled.div`
 const StyledInnerWrapper = styled.div`
   width: 75%;
   height: 90%;
-  overflow: scroll;
+  overflow-y: scroll;
 
   @media (min-width: 540px) {
     width: 80%;

@@ -9,12 +9,22 @@ const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
   background-color: transparent;
+  transition: 0.3s;
 
   ${({ active }) =>
     active &&
     css`
       background-color: #b4bf5e;
     `}
+
+  @media (min-width: 960px) {
+    height: 40px;
+
+    &:hover {
+      background-color: #b4bf5e;
+      cursor: pointer;
+    }
+  }
 `;
 
 const StyledIcon = styled(FolderOpen)`
@@ -25,12 +35,21 @@ const StyledIcon = styled(FolderOpen)`
     css`
       color: white;
     `}
+
+  @media (min-width: 960px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const StyledName = styled.p`
   min-width: 30px;
   margin-left: 22px;
   color: white;
+
+  @media (min-width: 960px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const CategoryListItem = ({ name, active }) => (
