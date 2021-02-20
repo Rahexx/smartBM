@@ -4,6 +4,17 @@ import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import BookmarkListItem from 'components/molecules/BookmarkListItem/BookmarkListItem';
 
+// Functions
+
+const handleClickButton = () => {
+  const popUpBookmark = document.querySelector('.popUpBookmark');
+  console.log(popUpBookmark);
+
+  popUpBookmark.style.display = 'flex';
+};
+
+// Styled components
+
 const StyledWrapper = styled.div`
   min-height: 100vh;
   width: 100vw;
@@ -93,7 +104,9 @@ const StyledItem = styled.li`
 const BookmarksSide = ({ title }) => (
   <StyledWrapper data-testid="BookmarksSide-element">
     <StyledHeader data-testid="BookmarksSide-title">{title}</StyledHeader>
-    <StyledButton addBookMark>Dodaj zakładkę</StyledButton>
+    <StyledButton addBookMark onClick={handleClickButton}>
+      Dodaj zakładkę
+    </StyledButton>
     <StyledList>
       <StyledItem>
         <BookmarkListItem number={1} title="Samochody ekskluzywne">

@@ -4,6 +4,23 @@ import Button from 'components/atoms/Button/Button';
 import Input from 'components/atoms/Input/Input';
 import { Plus } from '@styled-icons/boxicons-regular/Plus';
 
+// Functions
+
+const handleClickPlus = () => {
+  const addCategoryForm = document.querySelector('.addCategoryForm');
+
+  addCategoryForm.style.display = 'flex';
+};
+
+const handleSubmitCategory = (e) => {
+  const addCategoryForm = document.querySelector('.addCategoryForm');
+  e.preventDefault();
+
+  addCategoryForm.style.display = 'none';
+};
+
+// Styled components
+
 const StyledWrapper = styled.div`
   height: 85px;
   display: flex;
@@ -56,7 +73,7 @@ const StyledPlusIcon = styled(Plus)`
 
 const StyledForm = styled.form`
   height: 35px;
-  display: flex;
+  display: none;
   align-items: center;
 
   @media (min-width: 540px) {
@@ -92,9 +109,9 @@ const AddCategoryForm = () => (
   <StyledWrapper data-testid="AddCategoryForm-element">
     <InnerWrapper>
       <StyledFormText>Dodaj kategorię</StyledFormText>
-      <StyledPlusIcon size="29" />
+      <StyledPlusIcon size="29" onClick={handleClickPlus} />
     </InnerWrapper>
-    <StyledForm>
+    <StyledForm className="addCategoryForm" onSubmit={handleSubmitCategory}>
       <StyledInput placeholder="Nazwa kategorii" />
       <StyledButton>Dodaj</StyledButton>
     </StyledForm>

@@ -4,6 +4,16 @@ import Button from 'components/atoms/Button/Button';
 import Input from 'components/atoms/Input/Input';
 import { Cross } from '@styled-icons/entypo/Cross';
 
+// Functions
+
+const handleCloseButton = () => {
+  const bookmarkForm = document.querySelector('.popUpBookmark');
+
+  bookmarkForm.style.display = 'none';
+};
+
+// Styled components
+
 const StyledWrapper = styled.div`
   height: 100vh;
   width: 100vw;
@@ -46,6 +56,10 @@ const StyledCrossIcon = styled(Cross)`
   position: absolute;
   top: 10px;
   right: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledHeader = styled.h2`
@@ -139,8 +153,8 @@ const StyledButton = styled(Button)`
 `;
 
 const AddBookmark = () => (
-  <StyledWrapper>
-    <StyledCrossIcon size="33" />
+  <StyledWrapper className="popUpBookmark">
+    <StyledCrossIcon size="33" onClick={handleCloseButton} />
     <StyledHeader>Dodaj zakładkę</StyledHeader>
     <StyledForm data-testid="AddBookmark-element">
       <StyledField>
