@@ -14,10 +14,14 @@ const Button = styled.button`
   ${({ addBookMark }) =>
     addBookMark &&
     css`
-      width: 120px;
-      font-size: 1.2rem;
+      height: 31px;
+      width: 123px;
+      font-size: 1.6rem;
+      font-weight: bold;
       background-color: #485922;
       border-radius: ${({ form }) => (form ? '12px' : '5px')};
+      text-transform: uppercase;
+
       @media (min-width: 400px) {
         width: 150px;
         font-size: 1.4rem;

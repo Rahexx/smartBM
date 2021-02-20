@@ -8,15 +8,37 @@ const StyledWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   padding: 40px 25px;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
+  background-color: white;
+  z-index: 3;
 
-  @media (min-width: 400px) {
+  @media (min-width: 375px) {
     justify-content: flex-start;
+  }
+
+  @media (min-width: 540px) {
+    height: 185vh;
+  }
+
+  @media (min-width: 960px) {
+    height: 75vh;
+    width: 50vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media (min-width: 1140px) {
+    width: 40vw;
+  }
+
+  @media (min-width: 1600px) {
+    width: 30vw;
   }
 `;
 
@@ -41,9 +63,28 @@ const StyledForm = styled.form`
   justify-content: space-between;
   align-items: center;
 
-  @media (min-width: 400px) {
-    height: 47vh;
+  @media (min-width: 375px) {
+    height: 54vh;
+    width: 50vw;
     margin-top: 50px;
+  }
+
+  @media (min-width: 540px) {
+    height: 130vh;
+  }
+
+  @media (min-width: 960px) {
+    height: 54vh;
+    width: calc(100vw / 3);
+  }
+
+  @media (min-width: 1140px) {
+    width: 25vw;
+  }
+
+  @media (min-width: 1600px) {
+    height: 48vh;
+    width: 15vw;
   }
 `;
 
@@ -75,6 +116,26 @@ const StyledTextArea = styled.textarea`
   border: 2px solid black;
   border-radius: 5px;
   resize: none;
+
+  &:focus {
+    outline: none;
+    border: 2px solid #485922;
+  }
+`;
+
+const StyledButton = styled(Button)`
+  @media (min-width: 400px) {
+    height: 34px;
+    width: 123px;
+    margin-top: 30px;
+    font-size: 1.6rem;
+  }
+
+  @media (min-width: 960px) {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 const AddBookmark = () => (
@@ -94,9 +155,9 @@ const AddBookmark = () => (
         <StyledLabel htmlFor="description">Opis zakładki</StyledLabel>
         <StyledTextArea name="description" id="description" placeholder="Opis zakładki" />
       </StyledField>
-      <Button addBookMark form>
-        Dodaj kategorię
-      </Button>
+      <StyledButton addBookMark form>
+        Dodaj
+      </StyledButton>
     </StyledForm>
   </StyledWrapper>
 );
