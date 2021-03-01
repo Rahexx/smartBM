@@ -1,23 +1,9 @@
 import React from 'react';
+import AppContext from 'context';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import Input from 'components/atoms/Input/Input';
 import { Plus } from '@styled-icons/boxicons-regular/Plus';
-
-// Functions
-
-const handleClickPlus = () => {
-  const addCategoryForm = document.querySelector('.addCategoryForm');
-
-  addCategoryForm.style.display = 'flex';
-};
-
-const handleSubmitCategory = (e) => {
-  const addCategoryForm = document.querySelector('.addCategoryForm');
-  e.preventDefault();
-
-  addCategoryForm.style.display = 'none';
-};
 
 // Styled components
 
@@ -105,17 +91,45 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const AddCategoryForm = () => (
-  <StyledWrapper data-testid="AddCategoryForm-element">
-    <InnerWrapper>
-      <StyledFormText>Dodaj kategorię</StyledFormText>
-      <StyledPlusIcon size="29" onClick={handleClickPlus} />
-    </InnerWrapper>
-    <StyledForm className="addCategoryForm" onSubmit={handleSubmitCategory}>
-      <StyledInput placeholder="Nazwa kategorii" />
-      <StyledButton>Dodaj</StyledButton>
-    </StyledForm>
-  </StyledWrapper>
-);
+const AddCategoryForm = () => {
+  const handleClickPlus = () => {
+    const addCategoryForm = document.querySelector('.addCategoryForm');
+
+    addCategoryForm.style.display = 'flex';
+  };
+
+  const handleSubmitCategory = () => {
+    const addCategoryForm = document.querySelector('.addCategoryForm');
+
+    addCategoryForm.style.display = 'none';
+  };
+
+  return (
+    <AppContext.Consumer>
+      {(context) => (
+        <StyledWrapper data-testid="AddCategoryForm-element">
+          <InnerWrapper>
+            <StyledFormText>Dodaj kategorię</StyledFormText>
+            <StyledPlusIcon size="29" onClick={handleClickPlus} />
+          </InnerWrapper>
+          <StyledForm
+            className="addCategoryForm"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const categoryName = document.querySelector('.categoryName');
+
+              handleSubmitCategory();
+              context.addCategory(categoryName.value);
+              categoryName.value = '';
+            }}
+          >
+            <StyledInput className="categoryName" placeholder="Nazwa kategorii" />
+            <StyledButton>Dodaj</StyledButton>
+          </StyledForm>
+        </StyledWrapper>
+      )}
+    </AppContext.Consumer>
+  );
+};
 
 export default AddCategoryForm;
