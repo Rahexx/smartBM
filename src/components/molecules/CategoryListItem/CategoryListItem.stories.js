@@ -7,4 +7,4 @@ export default {
 };
 
 export const CategoryItem = () => <CategoryListItem name="Elektronika" />;
-export const CategoryItemActive = () => <CategoryListItem name="Elektronika" active />;
+export const CategoryItemActive = () => <CategoryListItem name="Elektronika" />;

@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from 'context';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { FolderOpen } from '@styled-icons/boxicons-regular/FolderOpen';
@@ -52,20 +53,55 @@ const StyledName = styled.p`
   }
 `;
 
-const CategoryListItem = ({ name, active }) => (
-  <StyledWrapper data-testid="CategoryListItem-element" active={active}>
-    <StyledIcon size="20" active={active} />
-    <StyledName data-testid="CategoryListItem-name">{name}</StyledName>
-  </StyledWrapper>
-);
+const CategoryListItem = ({ name }) => {
+  const handlingChangeActive = (context, e) => {
+    const tag = e.target.tagName;
+
+    switch (tag) {
+      case 'P': {
+        const text = e.target.textContent;
+        context.changeActive(text);
+        break;
+      }
+      case 'DIV': {
+        const child = e.target.childNodes[1];
+        const text = child.textContent;
+        context.changeActive(text);
+        break;
+      }
+      case 'svg': {
+        const sibling = e.target.nextSibling;
+        const text = sibling.textContent;
+        context.changeActive(text);
+        break;
+      }
+      default: {
+        const parent = e.target.parentNode;
+        const sibling = parent.nextSibling;
+        const text = sibling.textContent;
+        context.changeActive(text);
+      }
+    }
+  };
+
+  return (
+    <AppContext.Consumer>
+      {(context) => (
+        <StyledWrapper
+          data-testid="CategoryListItem-element"
+          active={context.active === name}
+          onClick={(e) => handlingChangeActive(context, e)}
+        >
+          <StyledIcon size="20" active={context.active === name} />
+          <StyledName data-testid="CategoryListItem-name">{name}</StyledName>
+        </StyledWrapper>
+      )}
+    </AppContext.Consumer>
+  );
+};
 
 export default CategoryListItem;
 
 CategoryListItem.propTypes = {
   name: PropTypes.string.isRequired,
-  active: PropTypes.bool,
-};
-
-CategoryListItem.defaultProps = {
-  active: false,
 };
