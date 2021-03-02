@@ -27,15 +27,22 @@ const initialStateCategories = [
 
 const MainView = () => {
   const [categoryStore, setCategoryStore] = useState(initialStateCategories);
+  const [active, setActive] = useState('');
 
   const addCategory = (name) => {
     const updateStore = [...categoryStore, { name, bookmarks: [] }];
     setCategoryStore(updateStore);
   };
 
+  const changeActive = (nameCategory) => {
+    setActive(nameCategory);
+  };
+
   const contextValue = {
     categoryStore,
+    active,
     addCategory,
+    changeActive,
   };
 
   return (
