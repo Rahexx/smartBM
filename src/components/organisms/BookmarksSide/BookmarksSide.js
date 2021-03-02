@@ -8,7 +8,6 @@ import BookmarkListItem from 'components/molecules/BookmarkListItem/BookmarkList
 
 const handleClickButton = () => {
   const popUpBookmark = document.querySelector('.popUpBookmark');
-  console.log(popUpBookmark);
 
   popUpBookmark.style.display = 'flex';
 };
