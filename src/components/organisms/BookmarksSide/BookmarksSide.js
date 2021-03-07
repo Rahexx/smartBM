@@ -1,16 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import AppContext from 'context';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import BookmarkListItem from 'components/molecules/BookmarkListItem/BookmarkListItem';
-
-// Functions
-
-const handleClickButton = () => {
-  const popUpBookmark = document.querySelector('.popUpBookmark');
-
-  popUpBookmark.style.display = 'flex';
-};
 
 // Styled components
 
@@ -35,6 +27,7 @@ const StyledWrapper = styled.div`
 
 const StyledHeader = styled.h2`
   margin: 0 0 30px 15px;
+  height: 29px;
   text-align: left;
   color: white;
 
@@ -43,6 +36,7 @@ const StyledHeader = styled.h2`
   }
 
   @media (min-width: 960px) {
+    height: 40px;
     font-size: 3.3rem;
   }
 
@@ -100,37 +94,47 @@ const StyledItem = styled.li`
   }
 `;
 
-const BookmarksSide = ({ title }) => (
-  <StyledWrapper data-testid="BookmarksSide-element">
-    <StyledHeader data-testid="BookmarksSide-title">{title}</StyledHeader>
-    <StyledButton addBookMark onClick={handleClickButton}>
-      Dodaj zakładkę
-    </StyledButton>
-    <StyledList>
-      <StyledItem>
-        <BookmarkListItem number={1} title="Samochody ekskluzywne">
-          Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non est
-          ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
-        </BookmarkListItem>
-      </StyledItem>
-      <StyledItem>
-        <BookmarkListItem number={2} title="Samochody ekskluzywne">
-          Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non est
-          ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
-        </BookmarkListItem>
-      </StyledItem>
-      <StyledItem>
-        <BookmarkListItem number={3} title="Samochody ekskluzywne">
-          Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non est
-          ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
-        </BookmarkListItem>
-      </StyledItem>
-    </StyledList>
-  </StyledWrapper>
-);
+const BookmarksSide = () => {
+  const handleClickButton = () => {
+    const popUpBookmark = document.querySelector('.popUpBookmark');
+
+    popUpBookmark.style.display = 'flex';
+  };
+
+  return (
+    <AppContext.Consumer>
+      {(context) => (
+        <StyledWrapper data-testid="BookmarksSide-element">
+          <StyledHeader data-testid="BookmarksSide-title">
+            {context.active ? context.active : ' '}
+          </StyledHeader>
+          <StyledButton addBookMark onClick={handleClickButton}>
+            Dodaj zakładkę
+          </StyledButton>
+          <StyledList>
+            <StyledItem>
+              <BookmarkListItem number={1} title="Samochody ekskluzywne">
+                Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non
+                est ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
+              </BookmarkListItem>
+            </StyledItem>
+            <StyledItem>
+              <BookmarkListItem number={2} title="Samochody ekskluzywne">
+                Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non
+                est ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
+              </BookmarkListItem>
+            </StyledItem>
+            <StyledItem>
+              <BookmarkListItem number={3} title="Samochody ekskluzywne">
+                Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non
+                est ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
+              </BookmarkListItem>
+            </StyledItem>
+          </StyledList>
+        </StyledWrapper>
+      )}
+    </AppContext.Consumer>
+  );
+};
 
 export default BookmarksSide;
-
-BookmarksSide.propTypes = {
-  title: PropTypes.string.isRequired,
-};
