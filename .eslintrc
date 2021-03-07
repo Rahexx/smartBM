@@ -20,7 +20,9 @@
       ],
       "react/jsx-props-no-spreading": 1,
       "react/no-unescaped-entities": 1,
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": "off",
+      "no-plusplus": [2, { "allowForLoopAfterthoughts": true }]
+
   },
   "settings": {
     "import/resolver": {
