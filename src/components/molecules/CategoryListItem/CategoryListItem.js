@@ -93,7 +93,9 @@ const CategoryListItem = ({ name }) => {
           onClick={(e) => handlingChangeActive(context, e)}
         >
           <StyledIcon size="20" active={context.active === name} />
-          <StyledName data-testid="CategoryListItem-name">{name}</StyledName>
+          <StyledName className="categoryItem" data-testid="CategoryListItem-name">
+            {name}
+          </StyledName>
         </StyledWrapper>
       )}
     </AppContext.Consumer>

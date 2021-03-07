@@ -44,13 +44,41 @@ const SubmitBtn = styled.button`
   }
 `;
 
-const SearchCategoryForm = () => (
-  <StyledForm data-testid="SearchCategoryForm-element">
-    <Input placeholder="Szukaj kategorii" search />
-    <SubmitBtn>
-      <Search size="18" />
-    </SubmitBtn>
-  </StyledForm>
-);
+const SearchCategoryForm = () => {
+  const showSearchElements = (categoriesArray, searchText) => {
+    const elementsArray = categoriesArray;
+
+    for (let i = 0; i < elementsArray.length; i++) {
+      const text = elementsArray[i].textContent.toLowerCase();
+
+      if (searchText === '') {
+        elementsArray[i].parentNode.style.display = 'flex';
+      } else if (!text.includes(searchText)) {
+        elementsArray[i].parentNode.style.display = 'none';
+      } else {
+        elementsArray[i].parentNode.style.display = 'flex';
+      }
+    }
+  };
+
+  const searchCategory = (e) => {
+    e.preventDefault();
+    const input = document.querySelector('.searchInput');
+    const categories = document.querySelectorAll('.categoryItem');
+    const searchText = input.value.toLowerCase();
+    const categoriesArray = [...categories];
+
+    showSearchElements(categoriesArray, searchText);
+  };
+
+  return (
+    <StyledForm data-testid="SearchCategoryForm-element">
+      <Input className="searchInput" placeholder="Szukaj kategorii" search />
+      <SubmitBtn onClick={(e) => searchCategory(e)}>
+        <Search size="18" />
+      </SubmitBtn>
+    </StyledForm>
+  );
+};
 
 export default SearchCategoryForm;
