@@ -1,16 +1,10 @@
+/* eslint-disable no-param-reassign */
 import React from 'react';
+import AppContext from 'context';
 import styled, { css } from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import Input from 'components/atoms/Input/Input';
 import { Cross } from '@styled-icons/entypo/Cross';
-
-// Functions
-
-const handleCloseButton = () => {
-  const bookmarkForm = document.querySelector('.popUpBookmark');
-
-  bookmarkForm.style.display = 'none';
-};
 
 // Styled components
 
@@ -152,28 +146,58 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const AddBookmark = () => (
-  <StyledWrapper className="popUpBookmark">
-    <StyledCrossIcon size="33" onClick={handleCloseButton} />
-    <StyledHeader>Dodaj zakładkę</StyledHeader>
-    <StyledForm data-testid="AddBookmark-element">
-      <StyledField>
-        <StyledLabel htmlFor="title">Tytuł zakładki</StyledLabel>
-        <Input name="title" id="title" placeholder="Tytuł zakładki" form />
-      </StyledField>
-      <StyledField>
-        <StyledLabel htmlFor="link">Link</StyledLabel>
-        <Input name="link" id="link" placeholder="Link" form />
-      </StyledField>
-      <StyledField larger>
-        <StyledLabel htmlFor="description">Opis zakładki</StyledLabel>
-        <StyledTextArea name="description" id="description" placeholder="Opis zakładki" />
-      </StyledField>
-      <StyledButton addBookMark form>
-        Dodaj
-      </StyledButton>
-    </StyledForm>
-  </StyledWrapper>
-);
+const AddBookmark = () => {
+  const handleCloseButton = () => {
+    const bookmarkForm = document.querySelector('.popUpBookmark');
+
+    bookmarkForm.style.display = 'none';
+  };
+
+  const clearForm = (...inputs) => {
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].value = '';
+    }
+  };
+
+  const handleSubmit = (e, context) => {
+    e.preventDefault();
+
+    const title = document.querySelector('input[name="title"]');
+    const link = document.querySelector('input[name="link"]');
+    const description = document.querySelector('textarea[name="description"]');
+
+    context.addNewBookmark(title.value, link.value, description.value);
+    clearForm(title, link, description);
+    handleCloseButton();
+  };
+
+  return (
+    <AppContext.Consumer>
+      {(context) => (
+        <StyledWrapper className="popUpBookmark">
+          <StyledCrossIcon size="33" onClick={handleCloseButton} />
+          <StyledHeader>Dodaj zakładkę</StyledHeader>
+          <StyledForm data-testid="AddBookmark-element" onSubmit={(e) => handleSubmit(e, context)}>
+            <StyledField>
+              <StyledLabel htmlFor="title">Tytuł zakładki</StyledLabel>
+              <Input name="title" id="title" placeholder="Tytuł zakładki" form="isTrue" />
+            </StyledField>
+            <StyledField>
+              <StyledLabel htmlFor="link">Link</StyledLabel>
+              <Input name="link" id="link" placeholder="Link" form="isTrue" />
+            </StyledField>
+            <StyledField larger>
+              <StyledLabel htmlFor="description">Opis zakładki</StyledLabel>
+              <StyledTextArea name="description" id="description" placeholder="Opis zakładki" />
+            </StyledField>
+            <StyledButton addBookMark form="isTrue">
+              Dodaj
+            </StyledButton>
+          </StyledForm>
+        </StyledWrapper>
+      )}
+    </AppContext.Consumer>
+  );
+};
 
 export default AddBookmark;

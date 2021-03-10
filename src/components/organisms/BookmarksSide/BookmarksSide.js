@@ -108,9 +108,14 @@ const BookmarksSide = () => {
           <StyledHeader data-testid="BookmarksSide-title">
             {context.active ? context.active : ' '}
           </StyledHeader>
-          <StyledButton addBookMark onClick={handleClickButton}>
-            Dodaj zakładkę
-          </StyledButton>
+          {context.active ? (
+            <StyledButton addBookMark onClick={handleClickButton}>
+              Dodaj zakładkę
+            </StyledButton>
+          ) : (
+            ''
+          )}
+
           <StyledList>
             <StyledItem>
               <BookmarkListItem number={1} title="Samochody ekskluzywne">

@@ -38,11 +38,30 @@ const MainView = () => {
     setActive(nameCategory);
   };
 
+  const addNewBookmark = (title, link, description) => {
+    const newStore = categoryStore;
+
+    for (let i = 0; i < newStore.length; i++) {
+      if (newStore[i].name === active) {
+        const newBookmark = {
+          title,
+          description,
+          link,
+        };
+
+        newStore[i].bookmarks.push(newBookmark);
+      }
+    }
+
+    setCategoryStore(newStore);
+  };
+
   const contextValue = {
     categoryStore,
     active,
     addCategory,
     changeActive,
+    addNewBookmark,
   };
 
   return (
