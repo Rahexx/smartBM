@@ -123,7 +123,11 @@ const BookmarksSide = () => {
                 (bookmark, index) =>
                   item.name === context.active && (
                     <StyledItem key={bookmark.title}>
-                      <BookmarkListItem number={index + 1} title={bookmark.title}>
+                      <BookmarkListItem
+                        number={index + 1}
+                        title={bookmark.title}
+                        link={bookmark.link}
+                      >
                         {bookmark.description}
                       </BookmarkListItem>
                     </StyledItem>

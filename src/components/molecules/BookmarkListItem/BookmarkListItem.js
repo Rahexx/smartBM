@@ -116,11 +116,20 @@ const StyledIconTrash = styled(Trash)`
   }
 `;
 
-const BookmarkListItem = ({ number, title, children }) => (
+const StyledHyperLink = styled.a`
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const BookmarkListItem = ({ number, title, link, children }) => (
   <StyledWrapper data-testid="BookmarkListItem-element">
     <IdBookmark data-testid="BookmarkListItem-number">{number}</IdBookmark>
     <StyledInnerWrapper>
-      <StyledTitleBookmark data-testid="BookmarkListItem-title">{title}</StyledTitleBookmark>
+      <StyledHyperLink href={link} target="_blank" rel="noreferrer">
+        <StyledTitleBookmark data-testid="BookmarkListItem-title">{title}</StyledTitleBookmark>
+      </StyledHyperLink>
       <StyledText data-testid="BookmarkListItem-description">{children}</StyledText>
     </StyledInnerWrapper>
     <StyledDelete>
@@ -134,6 +143,7 @@ export default BookmarkListItem;
 BookmarkListItem.propTypes = {
   number: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
   children: PropTypes.string,
 };
 
