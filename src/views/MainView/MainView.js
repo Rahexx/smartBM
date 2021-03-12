@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import AppContext from 'context';
 import MainTemplate from 'template/MainTemplate';
@@ -53,7 +55,7 @@ const MainView = () => {
       }
     }
 
-    setCategoryStore(newStore);
+    setCategoryStore([...newStore]);
   };
 
   const contextValue = {

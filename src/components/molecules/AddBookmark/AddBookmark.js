@@ -177,7 +177,7 @@ const AddBookmark = () => {
         <StyledWrapper className="popUpBookmark">
           <StyledCrossIcon size="33" onClick={handleCloseButton} />
           <StyledHeader>Dodaj zakładkę</StyledHeader>
-          <StyledForm data-testid="AddBookmark-element" onSubmit={(e) => handleSubmit(e, context)}>
+          <StyledForm data-testid="AddBookmark-element">
             <StyledField>
               <StyledLabel htmlFor="title">Tytuł zakładki</StyledLabel>
               <Input name="title" id="title" placeholder="Tytuł zakładki" form="isTrue" />
@@ -190,7 +190,13 @@ const AddBookmark = () => {
               <StyledLabel htmlFor="description">Opis zakładki</StyledLabel>
               <StyledTextArea name="description" id="description" placeholder="Opis zakładki" />
             </StyledField>
-            <StyledButton addBookMark form="isTrue">
+            <StyledButton
+              addBookMark
+              form="isTrue"
+              onClick={(e) => {
+                handleSubmit(e, context);
+              }}
+            >
               Dodaj
             </StyledButton>
           </StyledForm>

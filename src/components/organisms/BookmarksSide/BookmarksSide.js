@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React from 'react';
 import AppContext from 'context';
 import styled from 'styled-components';
@@ -117,24 +118,18 @@ const BookmarksSide = () => {
           )}
 
           <StyledList>
-            <StyledItem>
-              <BookmarkListItem number={1} title="Samochody ekskluzywne">
-                Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non
-                est ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
-              </BookmarkListItem>
-            </StyledItem>
-            <StyledItem>
-              <BookmarkListItem number={2} title="Samochody ekskluzywne">
-                Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non
-                est ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
-              </BookmarkListItem>
-            </StyledItem>
-            <StyledItem>
-              <BookmarkListItem number={3} title="Samochody ekskluzywne">
-                Opis ogłoszenia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non
-                est ut mauris tempor euismod. Etiam lacinia tempor sollicitudin.
-              </BookmarkListItem>
-            </StyledItem>
+            {context.categoryStore.map((item) =>
+              item.bookmarks.map(
+                (bookmark, index) =>
+                  item.name === context.active && (
+                    <StyledItem key={bookmark.title}>
+                      <BookmarkListItem number={index + 1} title={bookmark.title}>
+                        {bookmark.description}
+                      </BookmarkListItem>
+                    </StyledItem>
+                  ),
+              ),
+            )}
           </StyledList>
         </StyledWrapper>
       )}
