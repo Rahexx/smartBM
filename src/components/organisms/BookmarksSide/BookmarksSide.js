@@ -122,7 +122,7 @@ const BookmarksSide = () => {
               item.bookmarks.map(
                 (bookmark, index) =>
                   item.name === context.active && (
-                    <StyledItem key={bookmark.title}>
+                    <StyledItem key={bookmark.title + Math.random() * 100}>
                       <BookmarkListItem
                         number={index + 1}
                         title={bookmark.title}

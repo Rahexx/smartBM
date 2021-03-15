@@ -58,12 +58,25 @@ const MainView = () => {
     setCategoryStore([...newStore]);
   };
 
+  const deleteBookmark = (id) => {
+    const newStore = categoryStore;
+
+    for (let i = 0; i < newStore.length; i++) {
+      if (newStore[i].name === active) {
+        newStore[i].bookmarks.splice(id - 1, 1);
+      }
+    }
+
+    setCategoryStore([...newStore]);
+  };
+
   const contextValue = {
     categoryStore,
     active,
     addCategory,
     changeActive,
     addNewBookmark,
+    deleteBookmark,
   };
 
   return (

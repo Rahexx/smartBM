@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from 'context';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import IdBookmark from 'components/atoms/IdBookmark/IdBookmark';
@@ -123,20 +124,60 @@ const StyledHyperLink = styled.a`
   }
 `;
 
-const BookmarkListItem = ({ number, title, link, children }) => (
-  <StyledWrapper data-testid="BookmarkListItem-element">
-    <IdBookmark data-testid="BookmarkListItem-number">{number}</IdBookmark>
-    <StyledInnerWrapper>
-      <StyledHyperLink href={link} target="_blank" rel="noreferrer">
-        <StyledTitleBookmark data-testid="BookmarkListItem-title">{title}</StyledTitleBookmark>
-      </StyledHyperLink>
-      <StyledText data-testid="BookmarkListItem-description">{children}</StyledText>
-    </StyledInnerWrapper>
-    <StyledDelete>
-      <StyledIconTrash size="20" />
-    </StyledDelete>
-  </StyledWrapper>
-);
+const BookmarkListItem = ({ number, title, link, children }) => {
+  const deleteBookmark = (e, context) => {
+    const { target } = e;
+    const targetTag = target.tagName;
+    let idElement;
+
+    switch (targetTag) {
+      case 'P': {
+        const parent = target.parentNode;
+        idElement = parent.children[0].textContent;
+        break;
+      }
+      case 'svg': {
+        const parent = target.parentNode;
+        const grandFather = parent.parentNode;
+        idElement = grandFather.children[0].textContent;
+        break;
+      }
+      default: {
+        const parent = target.parentNode;
+        const grandFather = parent.parentNode;
+        const granGrandFather = grandFather.parentNode;
+        idElement = granGrandFather.children[0].textContent;
+      }
+    }
+
+    context.deleteBookmark(idElement);
+  };
+
+  return (
+    <AppContext.Consumer>
+      {(context) => (
+        <StyledWrapper data-testid="BookmarkListItem-element">
+          <IdBookmark data-testid="BookmarkListItem-number">{number}</IdBookmark>
+          <StyledInnerWrapper>
+            <StyledHyperLink href={link} target="_blank" rel="noreferrer">
+              <StyledTitleBookmark data-testid="BookmarkListItem-title">
+                {title}
+              </StyledTitleBookmark>
+            </StyledHyperLink>
+            <StyledText data-testid="BookmarkListItem-description">{children}</StyledText>
+          </StyledInnerWrapper>
+          <StyledDelete
+            onClick={(e) => {
+              deleteBookmark(e, context);
+            }}
+          >
+            <StyledIconTrash size="20" />
+          </StyledDelete>
+        </StyledWrapper>
+      )}
+    </AppContext.Consumer>
+  );
+};
 
 export default BookmarkListItem;
 
