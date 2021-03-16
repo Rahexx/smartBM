@@ -41,10 +41,25 @@ const StyledHeader = styled.h2`
 `;
 
 const ListCategory = styled.ul`
-  width: 100%;
+  width: 90%;
   height: 45vh;
   list-style: none;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #798c35;
+    outline: 0;
+    border-radius: 7px;
+  }
 
   @media (min-width: 540px) {
     height: 35vh;
