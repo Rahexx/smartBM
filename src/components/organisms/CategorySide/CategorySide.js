@@ -43,6 +43,7 @@ const StyledHeader = styled.h2`
 const ListCategory = styled.ul`
   width: 90%;
   height: 45vh;
+  margin-bottom: 20px;
   list-style: none;
   overflow-y: scroll;
 

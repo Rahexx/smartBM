@@ -47,7 +47,9 @@ const StyledHeader = styled.h2`
 `;
 
 const StyledButton = styled(Button)`
-  margin-left: 15px;
+  width: 175px;
+  margin: 0 0 20px 15px;
+  font-size: 1.4rem;
 
   @media (min-width: 720px) {
     margin-left: 30px;
@@ -60,7 +62,7 @@ const StyledButton = styled(Button)`
   }
 
   @media (min-width: 1600px) {
-    margin-left: 80px;
+    margin: 0 0 20px 80px;
   }
 `;
 
@@ -110,9 +112,12 @@ const BookmarksSide = () => {
             {context.active ? context.active : ' '}
           </StyledHeader>
           {context.active ? (
-            <StyledButton addBookMark onClick={handleClickButton}>
-              Dodaj zakładkę
-            </StyledButton>
+            <>
+              <StyledButton addBookMark onClick={handleClickButton}>
+                Dodaj zakładkę
+              </StyledButton>
+              <StyledButton addBookMark>Usuń zakładkę</StyledButton>
+            </>
           ) : (
             ''
           )}
