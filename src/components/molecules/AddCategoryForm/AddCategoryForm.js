@@ -92,10 +92,18 @@ const StyledButton = styled(Button)`
 `;
 
 const AddCategoryForm = () => {
+  let activeForm = false;
+
   const handleClickPlus = () => {
     const addCategoryForm = document.querySelector('.addCategoryForm');
 
-    addCategoryForm.style.display = 'flex';
+    if (activeForm === false) {
+      addCategoryForm.style.display = 'flex';
+      activeForm = true;
+    } else {
+      addCategoryForm.style.display = 'none';
+      activeForm = false;
+    }
   };
 
   const handleSubmitCategory = () => {

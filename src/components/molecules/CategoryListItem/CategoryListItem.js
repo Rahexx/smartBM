@@ -6,7 +6,7 @@ import { FolderOpen } from '@styled-icons/boxicons-regular/FolderOpen';
 
 const StyledWrapper = styled.div`
   height: 29px;
-  width: 100%;
+  width: 98%;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -30,6 +30,10 @@ const StyledWrapper = styled.div`
 
 const StyledIcon = styled(FolderOpen)`
   color: #b4bf5e;
+
+  ${StyledWrapper}:hover & {
+    color: white;
+  }
 
   ${({ active }) =>
     active &&
