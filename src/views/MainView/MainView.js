@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import AppContext from 'context';
 import MainTemplate from 'template/MainTemplate';
 import AddBookmark from 'components/molecules/AddBookmark/AddBookmark';
+import ConfirmDelete from 'components/molecules/ConfirmDelete/ConfirmDelete';
 import BookmarksSide from 'components/organisms/BookmarksSide/BookmarksSide';
 import CategorySide from 'components/organisms/CategorySide/CategorySide';
 
@@ -89,6 +90,7 @@ const MainView = () => {
     <AppContext.Provider value={contextValue}>
       <MainTemplate>
         <AddBookmark />
+        <ConfirmDelete />
         <CategorySide />
         <BookmarksSide title="Ogólne" />
       </MainTemplate>

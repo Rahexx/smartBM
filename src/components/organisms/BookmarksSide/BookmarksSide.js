@@ -104,8 +104,10 @@ const BookmarksSide = () => {
     popUpBookmark.style.display = 'flex';
   };
 
-  const handleDeleteButton = (context) => {
-    context.deleteCategory();
+  const confirmDelete = () => {
+    const confirmPopup = document.querySelector('.confirmDelete');
+
+    confirmPopup.style.display = 'flex';
   };
 
   return (
@@ -120,8 +122,8 @@ const BookmarksSide = () => {
               <StyledButton addBookMark onClick={handleClickButton}>
                 Dodaj zakładkę
               </StyledButton>
-              <StyledButton addBookMark onClick={() => handleDeleteButton(context)}>
-                Usuń zakładkę
+              <StyledButton addBookMark onClick={confirmDelete}>
+                Usuń kategorię
               </StyledButton>
             </>
           ) : (
