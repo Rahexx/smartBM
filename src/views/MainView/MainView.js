@@ -38,6 +38,7 @@ const MainView = () => {
         };
 
         newStore[i].bookmarks.push(newBookmark);
+        break;
       }
     }
 
@@ -51,6 +52,22 @@ const MainView = () => {
     for (let i = 0; i < newStore.length; i++) {
       if (newStore[i].name === active) {
         newStore[i].bookmarks.splice(id - 1, 1);
+        break;
+      }
+    }
+
+    setCategoryStore([...newStore]);
+    localStorage.setItem('categoryStore', JSON.stringify([...newStore]));
+  };
+
+  const deleteCategory = () => {
+    const newStore = categoryStore;
+
+    for (let i = 0; i < newStore.length; i++) {
+      if (newStore[i].name === active) {
+        newStore.splice(i, 1);
+        setActive('');
+        break;
       }
     }
 
@@ -65,6 +82,7 @@ const MainView = () => {
     changeActive,
     addNewBookmark,
     deleteBookmark,
+    deleteCategory,
   };
 
   return (

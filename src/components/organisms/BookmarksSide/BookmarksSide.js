@@ -104,6 +104,10 @@ const BookmarksSide = () => {
     popUpBookmark.style.display = 'flex';
   };
 
+  const handleDeleteButton = (context) => {
+    context.deleteCategory();
+  };
+
   return (
     <AppContext.Consumer>
       {(context) => (
@@ -116,7 +120,9 @@ const BookmarksSide = () => {
               <StyledButton addBookMark onClick={handleClickButton}>
                 Dodaj zakładkę
               </StyledButton>
-              <StyledButton addBookMark>Usuń zakładkę</StyledButton>
+              <StyledButton addBookMark onClick={() => handleDeleteButton(context)}>
+                Usuń zakładkę
+              </StyledButton>
             </>
           ) : (
             ''
