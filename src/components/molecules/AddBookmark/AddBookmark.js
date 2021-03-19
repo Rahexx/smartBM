@@ -147,16 +147,20 @@ const StyledButton = styled(Button)`
 `;
 
 const AddBookmark = () => {
-  const handleCloseButton = () => {
-    const bookmarkForm = document.querySelector('.popUpBookmark');
-
-    bookmarkForm.style.display = 'none';
-  };
-
   const clearForm = (...inputs) => {
     for (let i = 0; i < inputs.length; i++) {
       inputs[i].value = '';
     }
+  };
+
+  const handleCloseButton = () => {
+    const title = document.querySelector('input[name="title"]');
+    const link = document.querySelector('input[name="link"]');
+    const description = document.querySelector('textarea[name="description"]');
+    const bookmarkForm = document.querySelector('.popUpBookmark');
+
+    bookmarkForm.style.display = 'none';
+    clearForm(title, link, description);
   };
 
   const handleSubmit = (e, context) => {
@@ -166,9 +170,11 @@ const AddBookmark = () => {
     const link = document.querySelector('input[name="link"]');
     const description = document.querySelector('textarea[name="description"]');
 
-    context.addNewBookmark(title.value, link.value, description.value);
-    clearForm(title, link, description);
-    handleCloseButton();
+    if (title.value !== '' && link.value !== '' && description.value !== '') {
+      context.addNewBookmark(title.value, link.value, description.value);
+      clearForm(title, link, description);
+      handleCloseButton();
+    }
   };
 
   return (
@@ -180,7 +186,13 @@ const AddBookmark = () => {
           <StyledForm data-testid="AddBookmark-element">
             <StyledField>
               <StyledLabel htmlFor="title">Tytuł zakładki</StyledLabel>
-              <Input name="title" id="title" placeholder="Tytuł zakładki" form="isTrue" />
+              <Input
+                name="title"
+                id="title"
+                placeholder="Tytuł zakładki"
+                form="isTrue"
+                maxLength={50}
+              />
             </StyledField>
             <StyledField>
               <StyledLabel htmlFor="link">Link</StyledLabel>
@@ -188,7 +200,12 @@ const AddBookmark = () => {
             </StyledField>
             <StyledField larger>
               <StyledLabel htmlFor="description">Opis zakładki</StyledLabel>
-              <StyledTextArea name="description" id="description" placeholder="Opis zakładki" />
+              <StyledTextArea
+                name="description"
+                id="description"
+                placeholder="Opis zakładki"
+                maxLength={200}
+              />
             </StyledField>
             <StyledButton
               addBookMark
