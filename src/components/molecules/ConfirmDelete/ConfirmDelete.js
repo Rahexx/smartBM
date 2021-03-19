@@ -6,6 +6,7 @@ import Button from 'components/atoms/Button/Button';
 const StyledWrapper = styled.div`
   width: 75vw;
   height: 63vw;
+  padding: 10px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -17,12 +18,32 @@ const StyledWrapper = styled.div`
   background-color: white;
   border-radius: 7px;
   z-index: 4;
+
+  @media (min-width: 960px) {
+    height: 25vw;
+    width: 50vw;
+  }
+
+  @media (min-width: 1200px) {
+    height: 20vw;
+    width: 40vw;
+  }
+
+  @media (min-width: 1600px) {
+    height: 13vw;
+    width: 27vw;
+  }
 `;
 
 const StyledInfo = styled.h3`
   margin: 20px 0;
   color: #798c35;
   text-align: center;
+
+  @media (min-width: 960px) {
+    margin: 20px 0 40px;
+    font-size: 2.1rem;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -30,6 +51,10 @@ const StyledButton = styled(Button)`
   font-size: 1.6rem;
   text-transform: uppercase;
   font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const ConfirmDelete = () => {
