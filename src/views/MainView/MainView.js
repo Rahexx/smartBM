@@ -15,23 +15,25 @@ const MainView = () => {
     initialStateCategories === undefined ? initialStateCategories : [],
   );
 
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState(0);
 
   const addCategory = (name) => {
-    const updateStore = [...categoryStore, { name, bookmarks: [] }];
+    const id = categoryStore.length === 0 ? 1 : categoryStore[categoryStore.length - 1].id + 1;
+
+    const updateStore = [...categoryStore, { id, name, bookmarks: [] }];
     setCategoryStore(updateStore);
     localStorage.setItem('categoryStore', JSON.stringify(updateStore));
   };
 
-  const changeActive = (nameCategory) => {
-    setActive(nameCategory);
+  const changeActive = (idCategory) => {
+    setActive(idCategory);
   };
 
   const addNewBookmark = (title, link, description) => {
     const newStore = categoryStore;
 
     for (let i = 0; i < newStore.length; i++) {
-      if (newStore[i].name === active) {
+      if (Number(newStore[i].id) === Number(active)) {
         const newBookmark = {
           title,
           description,
@@ -51,7 +53,7 @@ const MainView = () => {
     const newStore = categoryStore;
 
     for (let i = 0; i < newStore.length; i++) {
-      if (newStore[i].name === active) {
+      if (Number(newStore[i].id) === Number(active)) {
         newStore[i].bookmarks.splice(id - 1, 1);
         break;
       }
@@ -65,7 +67,7 @@ const MainView = () => {
     const newStore = categoryStore;
 
     for (let i = 0; i < newStore.length; i++) {
-      if (newStore[i].name === active) {
+      if (Number(newStore[i].id) === Number(active)) {
         newStore.splice(i, 1);
         setActive('');
         break;
@@ -76,6 +78,20 @@ const MainView = () => {
     localStorage.setItem('categoryStore', JSON.stringify([...newStore]));
   };
 
+  const sendActiveName = () => {
+    const newStore = categoryStore;
+    let activeName;
+
+    for (let i = 0; i < newStore.length; i++) {
+      if (Number(newStore[i].id) === Number(active)) {
+        activeName = newStore[i].name;
+        break;
+      }
+    }
+
+    return activeName;
+  };
+
   const contextValue = {
     categoryStore,
     active,
@@ -84,6 +100,7 @@ const MainView = () => {
     addNewBookmark,
     deleteBookmark,
     deleteCategory,
+    sendActiveName,
   };
 
   return (

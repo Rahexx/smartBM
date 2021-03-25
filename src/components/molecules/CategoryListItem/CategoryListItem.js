@@ -57,33 +57,35 @@ const StyledName = styled.p`
   }
 `;
 
-const CategoryListItem = ({ name }) => {
+const CategoryListItem = ({ name, id }) => {
   const handlingChangeActive = (context, e) => {
-    const tag = e.target.tagName;
+    const { target } = e;
+    const tag = target.tagName;
 
     switch (tag) {
       case 'P': {
-        const text = e.target.textContent;
-        context.changeActive(text);
+        const parent = target.parentElement;
+        const idCategory = parent.dataset.id;
+
+        context.changeActive(idCategory);
         break;
       }
       case 'DIV': {
-        const child = e.target.childNodes[1];
-        const text = child.textContent;
-        context.changeActive(text);
+        const idCategory = target.dataset.id;
+        context.changeActive(idCategory);
         break;
       }
       case 'svg': {
-        const sibling = e.target.nextSibling;
-        const text = sibling.textContent;
-        context.changeActive(text);
+        const parent = target.parentElement;
+        const idCategory = parent.dataset.id;
+        context.changeActive(idCategory);
         break;
       }
       default: {
         const parent = e.target.parentNode;
         const sibling = parent.nextSibling;
-        const text = sibling.textContent;
-        context.changeActive(text);
+        const idCategory = sibling.dataset.id;
+        context.changeActive(idCategory);
       }
     }
   };
@@ -93,10 +95,11 @@ const CategoryListItem = ({ name }) => {
       {(context) => (
         <StyledWrapper
           data-testid="CategoryListItem-element"
-          active={context.active === name}
+          data-id={id}
+          active={Number(context.active) === Number(id)}
           onClick={(e) => handlingChangeActive(context, e)}
         >
-          <StyledIcon size="20" active={context.active === name} />
+          <StyledIcon size="20" active={Number(context.active) === Number(id)} />
           <StyledName className="categoryItem" data-testid="CategoryListItem-name">
             {name}
           </StyledName>
@@ -110,4 +113,5 @@ export default CategoryListItem;
 
 CategoryListItem.propTypes = {
   name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };

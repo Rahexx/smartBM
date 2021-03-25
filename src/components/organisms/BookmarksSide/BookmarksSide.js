@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import BookmarkListItem from 'components/molecules/BookmarkListItem/BookmarkListItem';
 
-// Styled components
-
 const StyledWrapper = styled.div`
   min-height: 100vh;
   width: 100vw;
@@ -115,7 +113,7 @@ const BookmarksSide = () => {
       {(context) => (
         <StyledWrapper data-testid="BookmarksSide-element">
           <StyledHeader data-testid="BookmarksSide-title">
-            {context.active ? context.active : ' '}
+            {context.active ? context.sendActiveName() : ' '}
           </StyledHeader>
           {context.active ? (
             <>
@@ -134,7 +132,7 @@ const BookmarksSide = () => {
             {context.categoryStore.map((item) =>
               item.bookmarks.map(
                 (bookmark, index) =>
-                  item.name === context.active && (
+                  Number(item.id) === Number(context.active) && (
                     <StyledItem key={bookmark.title + Math.random() * 100}>
                       <BookmarkListItem
                         number={index + 1}

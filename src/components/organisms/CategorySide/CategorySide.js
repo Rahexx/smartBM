@@ -6,8 +6,6 @@ import CategoryListItem from 'components/molecules/CategoryListItem/CategoryList
 import AddCategoryForm from 'components/molecules/AddCategoryForm/AddCategoryForm';
 import { DoubleArrow } from '@styled-icons/material-rounded/DoubleArrow';
 
-// styled elements
-
 const StyledWrapper = styled.div`
   height: 100vh;
   width: 100vw;
@@ -114,7 +112,11 @@ const CategorySide = () => {
           <StyledHeader>Kategorie</StyledHeader>
           <ListCategory>
             {context.categoryStore.map((item) => (
-              <CategoryListItem key={item.name} name={item.name} />
+              <CategoryListItem
+                key={item.name + Math.random() * 100}
+                name={item.name}
+                id={item.id}
+              />
             ))}
           </ListCategory>
           <AddCategoryForm />
