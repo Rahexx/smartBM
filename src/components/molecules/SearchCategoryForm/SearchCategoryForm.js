@@ -61,6 +61,14 @@ const SearchCategoryForm = () => {
     }
   };
 
+  const showAll = () => {
+    const categories = document.querySelectorAll('.categoryItem');
+
+    for (let i = 0; i < categories.length; i++) {
+      categories[i].parentNode.style.display = 'flex';
+    }
+  };
+
   const searchCategory = (e) => {
     e.preventDefault();
     const input = document.querySelector('.searchInput');
@@ -71,9 +79,18 @@ const SearchCategoryForm = () => {
     showSearchElements(categoriesArray, searchText);
   };
 
+  const isEmpty = () => {
+    const input = document.querySelector('.searchInput');
+    const inputValue = input.value;
+
+    if (!inputValue) {
+      showAll();
+    }
+  };
+
   return (
     <StyledForm data-testid="SearchCategoryForm-element">
-      <Input className="searchInput" placeholder="Szukaj kategorii" search />
+      <Input className="searchInput" placeholder="Szukaj kategorii" search onChange={isEmpty} />
       <SubmitBtn onClick={(e) => searchCategory(e)}>
         <Search size="18" />
       </SubmitBtn>
