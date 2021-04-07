@@ -11,9 +11,7 @@ import CategorySide from 'components/organisms/CategorySide/CategorySide';
 
 const MainView = () => {
   const initialStateCategories = JSON.parse(localStorage.getItem('categoryStore'));
-  const [categoryStore, setCategoryStore] = useState(
-    initialStateCategories === undefined ? initialStateCategories : [],
-  );
+  const [categoryStore, setCategoryStore] = useState(initialStateCategories || []);
 
   const [active, setActive] = useState(0);
 
